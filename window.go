@@ -30,6 +30,16 @@ func (w *Window) AddEventListener(typ string, h EventHandler) {
 	}))
 }
 
+func (w *Window) RemoveEventListener(typ string) {
+	eventToRemove := js.New("Event", typ)
+	w.v.Call("removeEventListener", eventToRemove)
+}
+
+func (w *Window) DispatchEvent(typ string) {
+	eventToDispatch := js.New("Event", typ)
+	w.v.Call("dispatchEvent", eventToDispatch)
+}
+
 func (w *Window) Open(url, windowName string, windowFeatures map[string]string) {
 	w.v.Call("open", url, windowName, joinKeyValuePairs(windowFeatures, ","))
 }
