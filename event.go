@@ -7,8 +7,8 @@ import (
 type EventTarget interface {
 	js.Wrapper
 	AddEventListener(typ string, h EventHandler)
-	// TODO: removeEventListener
-	// TODO: dispatchEvent
+	RemoveEventListener(typ string)
+	DispatchEvent(typ string)
 }
 
 type Event interface {
