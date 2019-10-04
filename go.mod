@@ -1,4 +1,4 @@
-module github.com/dennwc/dom
+module github.com/kerrex/dom
 
 go 1.12
 
