@@ -69,6 +69,16 @@ func (e *NodeBase) AddEventListener(typ string, h EventHandler) {
 	e.v.Call("addEventListener", typ, cb)
 }
 
+func (e *NodeBase) RemoveEventListener(typ string) {
+	eventToRemove := js.New("Event", typ)
+	e.v.Call("removeEventListener", eventToRemove)
+}
+
+func (e *NodeBase) DispatchEvent(typ string) {
+	eventToDispatch := js.New("Event", typ)
+	e.v.Call("dispatchEvent", eventToDispatch)
+}
+
 func (e *NodeBase) AddErrorListener(h func(err error)) {
 	e.AddEventListener("error", func(e Event) {
 		ConsoleLog(e.JSValue())
