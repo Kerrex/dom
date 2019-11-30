@@ -8,3 +8,5 @@ require (
 )
 
 replace github.com/dennwc/dom => ../
+
+go 1.13
